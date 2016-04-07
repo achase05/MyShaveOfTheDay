@@ -16,8 +16,10 @@ public class Item {
 
     private UUID mId; // A random id is assigned to each item for use
     private String mName; //Name of item
-    private String mType; //Type of item
-    private String mBrand;// Brand of item
+    private Integer mTypeIndex; //Type of item based on the index of the spinner
+    private String mTypeText;
+    private Integer mBrandIndex;// Brand of item based on the index of the spinner
+    private String mBrandText;
     private Date mPurchaseDate; //Date of purchase of item
     private String mPrice;
     private boolean mDisposable; //Is it disposable?
@@ -32,6 +34,9 @@ public class Item {
         mId = UUID.randomUUID(); // Assigns a random id to the item
         mPurchaseDate = new Date();
         mLastUse = new Date();
+        mItemCount = "0";
+        mTypeIndex = 0;
+        mBrandIndex = 0;
     }
 
     //Getter and Setter methods
@@ -48,20 +53,36 @@ public class Item {
         mName = name;
     }
 
-    public String getType() {
-        return mType;
+    public Integer getTypeIndex() {
+        return mTypeIndex;
     }
 
-    public void setType(String type) {
-        mType = type;
+    public void setTypeIndex(Integer type) {
+        mTypeIndex = type;
     }
 
-    public String getBrand() {
-        return mBrand;
+    public Integer getBrandIndex() {
+        return mBrandIndex;
     }
 
-    public void setBrand(String brand) {
-        mBrand = brand;
+    public void setBrandIndex(Integer brand) {
+        mBrandIndex = brand;
+    }
+
+    public String getTypeText() {
+        return mTypeText;
+    }
+
+    public void setTypeText(String typeText) {
+        mTypeText = typeText;
+    }
+
+    public String getBrandText() {
+        return mBrandText;
+    }
+
+    public void setBrandText(String brandText) {
+        mBrandText = brandText;
     }
 
     public Date getPurchaseDate() {
