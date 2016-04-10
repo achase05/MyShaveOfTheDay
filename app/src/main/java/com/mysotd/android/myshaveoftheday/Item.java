@@ -20,6 +20,7 @@ public class Item {
     private String mTypeText;
     private Integer mBrandIndex;// Brand of item based on the index of the spinner
     private String mBrandText;
+    private String[] mBrands;
     private Date mPurchaseDate; //Date of purchase of item
     private String mPrice;
     private boolean mDisposable; //Is it disposable?
@@ -37,6 +38,8 @@ public class Item {
         mItemCount = "0";
         mTypeIndex = 0;
         mBrandIndex = 0;
+        mPrice = "0.00";
+        mComments = "Enter additional notes here.";
     }
 
     //Getter and Setter methods
@@ -67,6 +70,14 @@ public class Item {
 
     public void setBrandIndex(Integer brand) {
         mBrandIndex = brand;
+    }
+
+    public String[] getmBrands() {
+        return mBrands;
+    }
+
+    public void setmBrands(String[] mBrands) {
+        this.mBrands = mBrands;
     }
 
     public String getTypeText() {
