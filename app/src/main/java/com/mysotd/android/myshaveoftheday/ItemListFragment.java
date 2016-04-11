@@ -33,12 +33,22 @@ public class ItemListFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        updateUI();
+    }
+
     private void updateUI(){
         ItemCollection itemCollection = ItemCollection.get(getActivity());
         List<Item> items = itemCollection.getItems();
 
-        mAdapter = new ItemAdapter(items);
-        mItemRecyclerView.setAdapter(mAdapter);
+        if(mAdapter == null) {
+            mAdapter = new ItemAdapter(items);
+            mItemRecyclerView.setAdapter(mAdapter);
+        } else {
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     private class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -61,7 +71,7 @@ public class ItemListFragment extends Fragment {
             mItem = item;
             mNameTextView.setText(mItem.getName());
             mCountTextView.setText(mItem.getItemCount());
-            mTypeTextView.setText(mItem.getType());
+            mTypeTextView.setText(mItem.getTypeText());
         }
 
         @Override

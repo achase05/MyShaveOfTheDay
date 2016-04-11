@@ -46,7 +46,7 @@ public class ItemFragment extends Fragment {
     private TextView mCount;
     private EditText mComments;
 
-    private Integer currentCount = 0;
+    private Integer currentCount;
 
     private String[] types =  {"Please select an item type","Razor", "Clipper", "Brush", "Soap", "Cream"};
     private String[] noBrand = {"Please select an item type first"};
@@ -105,11 +105,13 @@ public class ItemFragment extends Fragment {
         typeAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, types);
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mTypeSpinner.setAdapter(typeAdapter);
+        mTypeSpinner.setSelection(mItem.getTypeIndex());
 
         mBrandSpinner = (Spinner) v.findViewById(R.id.brand_name);
         brandAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item);
         brandAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mBrandSpinner.setAdapter(brandAdapter);
+        mBrandSpinner.setSelection(mItem.getBrandIndex());
 
         mTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -134,7 +136,8 @@ public class ItemFragment extends Fragment {
                     brandAdapter.addAll(brands);
                 }
 
-                mItem.setType(mTypeSpinner.getSelectedItem().toString());
+                mItem.setTypeIndex(mTypeSpinner.getSelectedItemPosition());
+                mItem.setTypeText(mTypeSpinner.getSelectedItem().toString());
             }
 
             @Override
@@ -146,8 +149,8 @@ public class ItemFragment extends Fragment {
         mBrandSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                mItem.setBrand(mBrandSpinner.getSelectedItem().toString());
+                mItem.setBrandIndex(mBrandSpinner.getSelectedItemPosition());
+                mItem.setBrandText(mBrandSpinner.getSelectedItem().toString());
             }
 
             @Override
@@ -196,6 +199,7 @@ public class ItemFragment extends Fragment {
         mMinusCount = (ImageButton) v.findViewById(R.id.count_minus);
         mCount = (TextView) v.findViewById(R.id.item_count);
 
+        currentCount = Integer.parseInt(mItem.getItemCount());
         mCount.setText(currentCount.toString());
         mItem.setItemCount(currentCount.toString());
 
