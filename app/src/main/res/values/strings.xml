@@ -12,4 +12,6 @@
     <string name="last_use_and_num_uses_label">Last Use and Number of Uses</string>
     <string name="item_comments_label">Comments</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
