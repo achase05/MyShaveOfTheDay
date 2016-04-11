@@ -76,7 +76,7 @@ public class ItemListFragment extends Fragment {
 
         @Override
         public void onClick(View v){
-            Intent intent = ItemActivity.newIntent(getActivity(), mItem.getId());
+            Intent intent = ItemPagerActivity.newIntent(getActivity(), mItem.getId());
             startActivity(intent);
         }
     }
