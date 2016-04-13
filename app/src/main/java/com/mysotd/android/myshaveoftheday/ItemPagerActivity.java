@@ -52,6 +52,13 @@ public class ItemPagerActivity extends FragmentActivity{
                 return mItems.size();
             }
         });
+
+        for(int i = 0; i < mItems.size(); i++){
+            if(mItems.get(i).getId().equals(itemId)){
+                mViewPager.setCurrentItem(i);
+                break;
+            }
+        }
     }
 
 
