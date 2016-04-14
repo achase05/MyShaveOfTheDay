@@ -43,6 +43,7 @@ public class ItemFragment extends Fragment {
     private CheckBox mDisposableCheckBox; //Check whether its disposable or not
     private ImageButton mPlusCount;
     private ImageButton mMinusCount;
+    private Button mLastUseDateButton;
     private TextView mCount;
     private EditText mComments;
 
@@ -52,6 +53,7 @@ public class ItemFragment extends Fragment {
     private String[] noBrand = {"Please select an item type first"};
     private String[] razorBrands  = {"Schick", "Gilette"};
     private String[] clipperBrands = {"Wahl"};
+    private String[] brands;
 
     private ArrayAdapter<String> typeAdapter;
     private ArrayAdapter<String> brandAdapter;
@@ -101,6 +103,8 @@ public class ItemFragment extends Fragment {
         });
 
         //Wiring up the Type and Brand spinners and setting their attributes
+        brands = mItem.getmBrands();
+
         mTypeSpinner = (Spinner) v.findViewById(R.id.item_type);
         typeAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, types);
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -111,33 +115,35 @@ public class ItemFragment extends Fragment {
         brandAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item);
         brandAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mBrandSpinner.setAdapter(brandAdapter);
-        mBrandSpinner.setSelection(mItem.getBrandIndex());
 
         mTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String[] brands;
 
                 if (mTypeSpinner.getSelectedItem().toString().equals(types[0])) {
                     mBrandSpinner.setEnabled(false);
                     brands = noBrand;
+                    mItem.setmBrands(brands);
                     brandAdapter.clear();
-                    brandAdapter.addAll(brands);
+                    brandAdapter.addAll(mItem.getmBrands());
                 }
 
                 if (mTypeSpinner.getSelectedItem().toString().equals("Razor")) {
                     mBrandSpinner.setEnabled(true);
                     brands = razorBrands;
+                    mItem.setmBrands(brands);
                     brandAdapter.clear();
-                    brandAdapter.addAll(brands);
+                    brandAdapter.addAll(mItem.getmBrands());
                 } else if (mTypeSpinner.getSelectedItem().toString().equals("Clipper")) {
                     brands = clipperBrands;
+                    mItem.setmBrands(brands);
                     brandAdapter.clear();
-                    brandAdapter.addAll(brands);
+                    brandAdapter.addAll(mItem.getmBrands());
                 }
 
                 mItem.setTypeIndex(mTypeSpinner.getSelectedItemPosition());
                 mItem.setTypeText(mTypeSpinner.getSelectedItem().toString());
+                mBrandSpinner.setSelection(mItem.getBrandIndex());
             }
 
             @Override
@@ -166,6 +172,7 @@ public class ItemFragment extends Fragment {
 
         //Wiring up the price text field widget and setting its attributes
         mPrice = (EditText) v.findViewById(R.id.item_price);
+        mPrice.setText(mItem.getPrice());
         mPrice.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -186,6 +193,7 @@ public class ItemFragment extends Fragment {
 
         //Wiring up the disposable check box and setting its attribute
         mDisposableCheckBox = (CheckBox)v.findViewById(R.id.disposable_check_box);
+        mDisposableCheckBox.setChecked(mItem.isDisposable());
         mDisposableCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -221,8 +229,14 @@ public class ItemFragment extends Fragment {
             }
         });
 
+        //Wiring up the Last Use date button
+        mLastUseDateButton = (Button)v.findViewById(R.id.last_use_date_button);
+        mLastUseDateButton.setText(mItem.getLastUse().toString());
+        mLastUseDateButton.setEnabled(false);
+
         //Wiring up the comments text field widget and setting its attributes
         mComments = (EditText) v.findViewById(R.id.comments);
+        mComments.setText(mItem.getComments());
         mComments.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
