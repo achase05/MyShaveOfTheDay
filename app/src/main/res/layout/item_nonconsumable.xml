@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@android:color/background_light"
+    android:weightSum="1">
+    <LinearLayout
+        android:layout_width="161dp"
+        android:layout_height="240dp"
+        android:orientation="vertical"
+        android:layout_margin="1dp"
+        android:background="#0B3861"
+        android:weightSum="1"
+        android:layout_weight="0.04">
+        >
+
+        <Button
+            android:id="@+id/close"
+            android:layout_width="34dp"
+            android:layout_height="37dp"
+            android:layout_gravity="right"
+            android:text="X"
+            android:gravity="top" />
+
+        <Button
+            android:id="@+id/buttonBlade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Blades"
+            android:gravity="center|left"
+            android:onClick="onButtonClickNonConsumableBlade"
+            android:clickable="true"/>
+
+        <Button
+            android:id="@+id/buttonRazor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Shaving Razors"
+            android:gravity="center|left"
+            android:onClick="onButtonClickNonConsumableRazor"
+            android:clickable="true"/>
+
+        <Button
+            android:id="@+id/buttonHairTrimmer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hair Trimmers"
+            android:gravity="center|left"
+            android:onClick="onButtonClickNonConsumableHairTrimmer"
+            android:clickable="true"/>
+
+        <Button
+            android:id="@+id/buttonBrush"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Brushes"
+            android:gravity="center|left"
+            android:onClick="onButtonClickNonConsumableBrush"
+            android:clickable="true"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="20dp">
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
