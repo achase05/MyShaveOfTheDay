@@ -1,8 +1,11 @@
 package com.mysotd.android.myshaveoftheday;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -20,6 +23,7 @@ import android.widget.TextView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -33,6 +37,9 @@ import java.util.UUID;
 public class ItemFragment extends Fragment {
 
     private static final String ARG_ITEM_ID = "item_id";
+    private static final String DIALOG_DATE = "DialogDate";
+
+    private static final int REQUEST_DATE = 0;
 
     private Item mItem;
     private EditText mNameField; //The name attribute text field
@@ -167,8 +174,17 @@ public class ItemFragment extends Fragment {
 
         //Wiring up the purchase date button widget and setting its attributes
         mPurchaseDateButton = (Button)v.findViewById(R.id.purchase_date_button);
-        mPurchaseDateButton.setText(mItem.getPurchaseDate().toString());
-        mPurchaseDateButton.setEnabled(false);
+        updateDate();
+        mPurchaseDateButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                FragmentManager manager = getFragmentManager();
+                DatePickerFragment dialog = new DatePickerFragment()
+                        .newInstance(mItem.getPurchaseDate());
+                dialog.setTargetFragment(ItemFragment.this, REQUEST_DATE);
+                dialog.show(manager, DIALOG_DATE);
+            }
+        });
 
         //Wiring up the price text field widget and setting its attributes
         mPrice = (EditText) v.findViewById(R.id.item_price);
@@ -258,4 +274,20 @@ public class ItemFragment extends Fragment {
         return v;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(resultCode != Activity.RESULT_OK){
+            return;
+        }
+
+        if(requestCode == REQUEST_DATE){
+            Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
+            mItem.setPurchaseDate(date);
+            updateDate();
+        }
+    }
+
+    private void updateDate() {
+        mPurchaseDateButton.setText(mItem.getPurchaseDate().toString());
+    }
 }

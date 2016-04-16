@@ -11,5 +11,6 @@
     <string name="disposable_label">Disposable?</string>
     <string name="last_use_and_num_uses_label">Last Use and Number of Uses</string>
     <string name="item_comments_label">Comments</string>
+    <string name="date_picker_title">Date of purchase:</string>
 
 </resources>
