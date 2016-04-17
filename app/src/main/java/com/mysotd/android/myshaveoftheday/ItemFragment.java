@@ -53,6 +53,7 @@ public class ItemFragment extends Fragment {
     private CheckBox mDisposableCheckBox; //Check whether its disposable or not
     private ImageButton mPlusCount;
     private ImageButton mMinusCount;
+    private TextView mNumUses;
     private Button mLastUseDateButton;
     private TextView mCount;
     private EditText mComments;
@@ -85,6 +86,13 @@ public class ItemFragment extends Fragment {
 
         UUID itemId = (UUID) getArguments().getSerializable(ARG_ITEM_ID);
         mItem = ItemCollection.get(getActivity()).getItem(itemId);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        ItemCollection.get(getActivity()).updateItem(mItem);
     }
 
     //Inflates the layout for the fragment. Contains all attribute fields
@@ -253,6 +261,10 @@ public class ItemFragment extends Fragment {
         mLastUseDateButton = (Button)v.findViewById(R.id.last_use_date_button);
         mLastUseDateButton.setText(mItem.getLastUse().toString());
         mLastUseDateButton.setEnabled(false);
+
+        //Wiring up the Number of Uses TextView
+        mNumUses = (TextView) v.findViewById(R.id.num_uses_text_view);
+        mNumUses.setText(mItem.getNumUses());
 
         //Wiring up the comments text field widget and setting its attributes
         mComments = (EditText) v.findViewById(R.id.comments);

@@ -29,16 +29,32 @@ public class Item {
     private String mNumUses; //Number of times each item was used
     private String mComments; //General notes of item
 
+    private static String strSeparator = "__,__";
 
     public Item(){
         //Generate unique identifier
-        mId = UUID.randomUUID(); // Assigns a random id to the item
+        this(UUID.randomUUID());
+
+        /*mId = UUID.randomUUID(); // Assigns a random id to the item
         mPurchaseDate = new Date();
         mLastUse = new Date();
         mItemCount = "0";
         mTypeIndex = 0;
         mBrandIndex = 0;
         mPrice = "0.00";
+        mNumUses = "0";
+        mComments = "Enter additional notes here.";*/
+    }
+
+    public Item(UUID id){
+        mId = id;
+        mPurchaseDate = new Date();
+        mLastUse = new Date();
+        mItemCount = "0";
+        mTypeIndex = 0;
+        mBrandIndex = 0;
+        mPrice = "0.00";
+        mNumUses = "0";
         mComments = "Enter additional notes here.";
     }
 
@@ -150,5 +166,21 @@ public class Item {
 
     public void setComments(String comments) {
         mComments = comments;
+    }
+
+    public static String convertArrayToString(String[] array){
+        String str = "";
+        for (int i = 0;i<array.length; i++) {
+            str = str+array[i];
+            // Do not append comma at the end of last element
+            if(i<array.length-1){
+                str = str+strSeparator;
+            }
+        }
+        return str;
+    }
+    public static String[] convertStringToArray(String str){
+        String[] arr = str.split(strSeparator);
+        return arr;
     }
 }

@@ -21,7 +21,7 @@ public class ItemDbSchema {
             public static String DISPOSABLE = "disposable"; //Is it disposable?
             public static String ITEM_COUNT = "item_count"; //Number of item
             public static String LAST_USE = "last_use"; //Last time item was used
-            //public static String NUM_USES = "nume_uses"; //Number of times each item was used
+            public static String NUM_USES = "num_uses"; //Number of times each item was used
             public static String COMMENTS = "comments"; //General notes of item
         }
     }
