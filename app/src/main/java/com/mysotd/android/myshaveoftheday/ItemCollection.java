@@ -24,13 +24,14 @@ public class ItemCollection {
 
     private ItemCollection(Context context){
         mItems = new ArrayList<>();
+    }
 
-        for(int i = 0; i < 100; i++){
-            Item item = new Item();
-            item.setName("Item #" + i);
-            item.setDisposable(i % 2 == 0);
-            mItems.add(item);
-        }
+    public void addItem(Item i){
+        mItems.add(i);
+    }
+
+    public void deleteItem(Item i){
+        mItems.remove(i);
     }
 
     public List<Item> getItems(){

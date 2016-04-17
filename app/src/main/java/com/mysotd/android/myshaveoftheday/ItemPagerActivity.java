@@ -8,6 +8,9 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import java.util.List;
 import java.util.UUID;
@@ -15,7 +18,7 @@ import java.util.UUID;
 /**
  * Created by Adam Chase on 4/11/2016.
  */
-public class ItemPagerActivity extends FragmentActivity{
+public class ItemPagerActivity extends AppCompatActivity {
 
     private static final String EXTRA_ITEM_ID = "com.mysotd.android.myshaveoftheday.item_id";
 
@@ -60,6 +63,5 @@ public class ItemPagerActivity extends FragmentActivity{
             }
         }
     }
-
 
 }

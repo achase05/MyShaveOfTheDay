@@ -12,5 +12,10 @@
     <string name="last_use_and_num_uses_label">Last Use and Number of Uses</string>
     <string name="item_comments_label">Comments</string>
     <string name="date_picker_title">Date of purchase:</string>
+    <string name="new_item">New Item</string>
+    <string name="delete_item">Delete</string>
+    <string name="show_subtitle">Show Subtitle</string>
+    <string name="hide_subtitle">Hide Subtitle</string>
+    <string name="subtitle_format">%1$s items</string>
 
 </resources>
