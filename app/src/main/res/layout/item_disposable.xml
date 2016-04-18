@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@android:color/background_light"
+    android:weightSum="1">
+    <LinearLayout
+        android:layout_width="161dp"
+        android:layout_height="134dp"
+        android:orientation="vertical"
+        android:layout_margin="1dp"
+        android:background="#0B3861"
+        android:weightSum="1"
+        android:layout_weight="0.04">
+        >
+
+        <Button
+            android:id="@+id/close"
+            android:layout_width="34dp"
+            android:layout_height="37dp"
+            android:layout_gravity="right"
+            android:text="X"
+            android:gravity="top" />
+
+        <Button
+            android:id="@+id/buttonUsedBlade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="100 Used Blades"
+            android:gravity="center|left"
+            android:onClick="onButtonClickDisposableUsedBlade"
+            android:clickable="true"/>
+
+        <Button
+            android:id="@+id/buttonRecycableCan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Recycable Cans"
+            android:gravity="center|left"
+            android:onClick="onButtonClickDisposableRecycableCan"
+            android:clickable="true"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="20dp">
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

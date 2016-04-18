@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@android:color/background_light"
+    android:weightSum="1">
+    <LinearLayout
+        android:layout_width="161dp"
+        android:layout_height="240dp"
+        android:orientation="vertical"
+        android:layout_margin="1dp"
+        android:background="#0B3861"
+        android:weightSum="1"
+        android:layout_weight="0.24">
+        >
+
+        <Button
+            android:id="@+id/close"
+            android:layout_width="34dp"
+            android:layout_height="37dp"
+            android:layout_gravity="right"
+            android:text="X"
+            android:gravity="top" />
+
+        <Button
+            android:id="@+id/buttonAfterShave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AfterShaves"
+            android:gravity="center|left"
+            android:onClick="onButtonClickConsumableAfterShave"
+            android:clickable="true" />
+
+        <Button
+            android:id="@+id/buttonSoap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Soaps"
+            android:gravity="center|left"
+            android:clickable="true"
+            android:onClick="onButtonClickConsumableSoap" />
+
+        <Button
+            android:id="@+id/buttonPreShave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PreShaves"
+            android:gravity="center|left"
+            android:onClick="onButtonClickConsumablePreShave"
+            android:clickable="true" />
+
+        <Button
+            android:id="@+id/buttonCream"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Creams"
+            android:gravity="center|left"
+            android:onClick="onButtonClickConsumableCream"
+            android:clickable="true" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="20dp">
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
