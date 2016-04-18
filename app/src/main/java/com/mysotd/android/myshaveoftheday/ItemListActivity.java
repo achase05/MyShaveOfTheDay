@@ -1,7 +1,14 @@
 package com.mysotd.android.myshaveoftheday;
 
+import android.support.v4.app.Fragment;
+
 /**
- * Created by Adam Chase on 4/18/2016.
+ * Created by Adam on 3/13/2016.
  */
-public class ItemListActivity {
+public class ItemListActivity extends SingleFragmentActivity {
+
+    @Override
+    protected Fragment createFragment() {
+        return new ItemListFragment();
+    }
 }
