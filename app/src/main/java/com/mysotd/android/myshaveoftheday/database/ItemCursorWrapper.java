@@ -9,9 +9,6 @@ import com.mysotd.android.myshaveoftheday.database.ItemDbSchema.ItemTable;
 import java.util.Date;
 import java.util.UUID;
 
-/**
- * Created by Adam Chase on 4/17/2016.
- */
 public class ItemCursorWrapper extends CursorWrapper {
     public ItemCursorWrapper(Cursor cursor){
         super(cursor);
