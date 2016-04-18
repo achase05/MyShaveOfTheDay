@@ -95,7 +95,7 @@ public class ItemCollection {
         values.put(ItemTable.Cols.BRAND_INDEX, item.getBrandIndex().toString());
         values.put(ItemTable.Cols.BRAND_TEXT, item.getBrandText());
         //values.put(ItemTable.Cols.BRANDS, item.convertArrayToString(item.getmBrands()));
-        values.put(ItemTable.Cols.PURCHASE_DATE, item.getPurchaseDate().toString());
+        values.put(ItemTable.Cols.PURCHASE_DATE, item.getPurchaseDate().getTime());
         values.put(ItemTable.Cols.PRICE, item.getPrice());
         values.put(ItemTable.Cols.DISPOSABLE, item.isDisposable() ? 1:0);
         values.put(ItemTable.Cols.ITEM_COUNT, item.getItemCount());
