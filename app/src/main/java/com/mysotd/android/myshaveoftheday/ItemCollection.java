@@ -43,6 +43,7 @@ public class ItemCollection {
     }
 
     public void deleteItem(Item i){
+        mDatabase.delete(ItemTable.NAME, ItemTable.Cols.UUID + " = ?", new String[] {i.getId().toString()});
     }
 
     public List<Item> getItems(){
