@@ -17,5 +17,8 @@
     <string name="show_subtitle">Show Subtitle</string>
     <string name="hide_subtitle">Hide Subtitle</string>
     <string name="subtitle_format">%1$s items</string>
+    <string name="new_category">New Category</string>
+    <string name="dialog_new_category_header_label">Enter a category name:</string>
+    <string name="dialog_new_category_name_label">Category name...</string>
 
 </resources>

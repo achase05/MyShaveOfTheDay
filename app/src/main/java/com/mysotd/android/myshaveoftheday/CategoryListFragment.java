@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -20,14 +23,14 @@ public class CategoryListFragment extends Fragment {
     private static final String SAVED_SUBTITLE_VISIBLE = "subtitle";
 
     private RecyclerView mCategoryRecyclerView;
-    private ItemAdapter mAdapter;
+    private CategoryAdapter mAdapter;
     //private boolean mSubtitleVisible;
 
-   /* @Override
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-    }*/
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -57,37 +60,37 @@ public class CategoryListFragment extends Fragment {
         outState.putBoolean(SAVED_SUBTITLE_VISIBLE, mSubtitleVisible);
     }*/
 
-    /*@Override
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.fragment_item_list, menu);
+        inflater.inflate(R.menu.fragment_category_list, menu);
 
-        MenuItem subtitleItem = menu.findItem(R.id.menu_item_show_subtitle);
+        /*MenuItem subtitleItem = menu.findItem(R.id.menu_item_show_subtitle);
         if(mSubtitleVisible) {
             subtitleItem.setTitle(R.string.hide_subtitle);
         } else {
             subtitleItem.setTitle(R.string.show_subtitle);
-        }
-    }*/
+        }*/
+    }
 
-   /* @Override
+   @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.menu_item_new_item:
-                Item i = new Item();
-                ItemCollection.get(getActivity()).addItem(i);
-                Intent intent = ItemPagerActivity.newIntent(getActivity(), i.getId());
+            case R.id.menu_item_new_category:
+                Category c = new Category();
+                CategoryCollection.get(getActivity()).addItem(c);
+                Intent intent = CategoryPagerActivity.newIntent(getActivity(), c.getId());
                 startActivity(intent);
                 return true;
-            case R.id.menu_item_show_subtitle:
+            /*case R.id.menu_item_show_subtitle:
                 mSubtitleVisible = !mSubtitleVisible;
                 getActivity().supportInvalidateOptionsMenu();
                 updateSubtitle();
-                return true;
+                return true;*/
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }*/
+    }
 
    /* private void updateSubtitle() {
         ItemCollection itemCollection = ItemCollection.get(getActivity());
@@ -103,75 +106,77 @@ public class CategoryListFragment extends Fragment {
     }*/
 
     private void updateUI(){
-        ItemCollection itemCollection = ItemCollection.get(getActivity());
-        List<Item> items = itemCollection.getItems();
+        CategoryCollection categoryCollection = CategoryCollection.get(getActivity());
+        List<Category> categories = categoryCollection.getCategories();
 
         if(mAdapter == null) {
-            mAdapter = new ItemAdapter(items);
+            mAdapter = new CategoryAdapter(categories);
             mCategoryRecyclerView.setAdapter(mAdapter);
         } else {
-            mAdapter.setItems(items);
+            mAdapter.setCategories(categories);
             mAdapter.notifyDataSetChanged();
         }
 
         //updateSubtitle();
     }
 
-    private class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    private class CategoryHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private Category mCategory;
 
         private TextView mNameTextView;
+        private TextView mCategoryItemCount;
 
-        public ItemHolder(View itemView) {
-            super(itemView);
-            itemView.setOnClickListener(this);
+        public CategoryHolder(View categoryView) {
+            super(categoryView);
+            categoryView.setOnClickListener(this);
 
-            mNameTextView = (TextView) itemView.findViewById(R.id.list_item_name_text_view);
+            mNameTextView = (TextView) categoryView.findViewById(R.id.list_category_name_text_view);
+            mCategoryItemCount = (TextView) categoryView.findViewById(R.id.category_item_count);
         }
 
         public void bindItem(Category category){
             mCategory = category;
             mNameTextView.setText(mCategory.getName());
+            mCategoryItemCount.setText("0");
         }
 
         @Override
         public void onClick(View v){
-            Intent intent = ItemPagerActivity.newIntent(getActivity(), mCategory.getId());
+            Intent intent = CategoryPagerActivity.newIntent(getActivity(), mCategory.getId());
             startActivity(intent);
         }
     }
 
-    /***************************This section for when the new database is created************************/
 
-    private class ItemAdapter extends RecyclerView.Adapter<ItemHolder> {
+    private class CategoryAdapter extends RecyclerView.Adapter<CategoryHolder> {
 
-        private List<Item> mItems;
+        private List<Category> mCategories;
 
-        public ItemAdapter(List<Item> items){
-            mItems = items;
+        public CategoryAdapter(List<Category> categories){
+            mCategories = categories;
         }
 
         @Override
-        public ItemHolder onCreateViewHolder(ViewGroup parent, int viewType){
+        public CategoryHolder onCreateViewHolder(ViewGroup parent, int viewType){
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            View view = layoutInflater.inflate(R.layout.list_item, parent, false);
+            View view = layoutInflater.inflate(R.layout.list_category, parent, false);
 
-            return new ItemHolder(view);
+            return new CategoryHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(ItemHolder holder, int position){
-            Item item = mItems.get(position);
-            holder.bindItem(item);
+        public void onBindViewHolder(CategoryHolder holder, int position){
+            Category category = mCategories.get(position);
+            holder.bindItem(category);
         }
 
         @Override
         public int getItemCount(){
-            return mItems.size();
+            return mCategories.size();
         }
 
-        public void setItems(List<Item> items) {
-            mItems = items;
+        public void setCategories(List<Category> categories) {
+            mCategories = categories;
         }
 
     }
