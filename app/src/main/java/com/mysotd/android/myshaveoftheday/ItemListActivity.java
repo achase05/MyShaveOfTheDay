@@ -1,11 +1,14 @@
 package com.mysotd.android.myshaveoftheday;
 
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 
 /**
  * Created by Adam on 3/13/2016.
  */
-public class ItemListActivity extends SingleFragmentActivity {
+public class ItemListActivity extends SingleFragmentActivity{
+
+    private String[] activities;
 
     @Override
     protected Fragment createFragment() {

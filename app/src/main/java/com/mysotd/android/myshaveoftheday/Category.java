@@ -8,6 +8,7 @@ import java.util.UUID;
 public class Category {
     private UUID mId;
     private String mName;
+    private boolean mIsNew;
 
     public Category(){
         this(UUID.randomUUID());
@@ -15,6 +16,7 @@ public class Category {
 
     public Category(UUID id){
         mId = id;
+        mIsNew = true;
     }
 
     public UUID getId() {
@@ -27,5 +29,13 @@ public class Category {
 
     public void setName(String mName) {
         this.mName = mName;
+    }
+
+    public boolean isIsNew() {
+        return mIsNew;
+    }
+
+    public void setIsNew(boolean mIsNew) {
+        this.mIsNew = mIsNew;
     }
 }
