@@ -31,5 +31,4 @@
         android:padding="4dp"
         tools:text="Item Type"/>
 
-
 </RelativeLayout>
