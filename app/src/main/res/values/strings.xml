@@ -11,11 +11,19 @@
     <string name="disposable_label">Disposable?</string>
     <string name="last_use_and_num_uses_label">Last Use and Number of Uses</string>
     <string name="item_comments_label">Comments</string>
-    <string name="date_picker_title">Date of purchase:</string>
+    <string name="date_picker_title">Date:</string>
     <string name="new_item">New Item</string>
     <string name="delete_item">Delete</string>
     <string name="show_subtitle">Show Subtitle</string>
     <string name="hide_subtitle">Hide Subtitle</string>
     <string name="subtitle_format">%1$s items</string>
+    <string name="shave_date_label">Date of Shave</string>
+    <string name="shave_name_hint">Name your shave...</string>
+    <string name="shave_description_label">Description</string>
+    <string name="shave_description">Talk about your shave. What did you use?</string>
+    <string name="shave_additional_comments_label">Comments</string>
+    <string name="shave_additional_comments">Additional comments go here.</string>
+    <string name="shave_add_item_description">Add Item Description</string>
+    <string name="menu_nav_inventory">My Inventory</string>
 
 </resources>
